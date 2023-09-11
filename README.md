@@ -12,13 +12,16 @@ docker build -t occlient ./
 docker run -dit --name occlient --privileged \
     -e RETRY_TIMEOUT=30 \
     -e SERVER="oc.mydomain.com" \
-    -e USER="username" \
+    -e USERNAME="username" \
     -e PASSWORD="mypassword" \
-    -e CERT="pin-sha256:26657320797d4f5b385d43274a246178263f3b686b645e37=" \
+    -e OC_OPTIONS="--servercert=pin-sha256:26657320797d4f5b385d43274a246178263f3b686b645e37=" \
     occlient
 ```
 
-### Check connection status
+### Configurations
+
+Config files available in ```/etc/occlient/server.conf``` you can modify it to get logs and change other
+options.
 
 ```bash
 docker exec -it occlient tail -f /oclogs.log
