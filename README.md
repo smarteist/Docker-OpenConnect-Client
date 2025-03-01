@@ -16,7 +16,7 @@ docker run -dit --name occlient --privileged \
     -e SERVER="oc.mydomain.com" \
     -e USERNAME="username" \
     -e PASSWORD="mypassword" \
-    -e OC_OPTIONS="--servercert=pin-sha256:26657320797d4f5b385d43274a246178263f3b686b645e37=" \
+    -e OC_OPTIONS="--servercert=pin-sha256:2246178263f....3b686b645e37=" \
     smarteist/openconnect-client
 ```
 
@@ -28,20 +28,32 @@ options.
 
 ### Logging
 
-To use save connection logs into the log file uncomment the ```CONNECTION_LOGS``` in config file ```/etc/occlient/server.conf```:
+To save connection logs, you can either:
 
-```bash
-#CONNECTION_LOGS=/dev/null
-CONNECTION_LOGS=/oclogs.log
-```
-Restart the container, and then you can see connection logs like so:
+1. **Edit the Config File**: Uncomment the `CONNECTION_LOGS` line in `/etc/occlient/server.conf`:
+
+   ```bash
+   #CONNECTION_LOGS=/dev/null
+   CONNECTION_LOGS=/oclogs.log
+   ```
+
+2. **Set an Environment Variable**: When starting the container, use:
+
+   ```bash
+   docker run <...> -e CONNECTION_LOGS=/oclogs.log <...>
+   ```
+
+After making changes, restart the container. To view the logs, run:
 
 ```bash
 docker exec -it occlient tail -f /oclogs.log
 ```
+
+This will let you monitor the connection logs in real-time.
 
 ## Usage Example
 
 To use oc client as network of other container, set net option of that container when you run it.
 
 ```docker run <...> --net container:occlient <...> someimage```
+
