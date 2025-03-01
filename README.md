@@ -34,19 +34,19 @@ To save connection logs, you can either:
 
    ```bash
    #CONNECTION_LOGS=/dev/null
-   CONNECTION_LOGS=/oclogs.log
+   CONNECTION_LOGS=/etc/occlient/oclogs.log
    ```
 
 2. **Set an Environment Variable**: When starting the container, use:
 
    ```bash
-   docker run <...> -e CONNECTION_LOGS=/oclogs.log <...>
+   docker run <...> -e CONNECTION_LOGS=/etc/occlient/oclogs.log <...>
    ```
 
 After making changes, restart the container. To view the logs, run:
 
 ```bash
-docker exec -it occlient tail -f /oclogs.log
+docker exec -it occlient tail -f /etc/occlient/oclogs.log
 ```
 
 This will let you monitor the connection logs in real-time.
