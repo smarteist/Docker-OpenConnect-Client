@@ -6,6 +6,10 @@
 if ! [ -f "/etc/occlient/server.conf" ] ; then
 mkdir -p /etc/occlient/
 
+if [ -z "$CONNECTION_LOGS" ]; then
+  CONNECTION_LOGS="/dev/null"
+fi
+
 cat > /etc/occlient/server.conf <<-EOSRV
 # --------------------------------------------
 # Uncomment your config and modify as needed.
@@ -18,7 +22,7 @@ cat > /etc/occlient/server.conf <<-EOSRV
 OC_OPTIONS="$OC_OPTIONS"
 RETRY_TIMEOUT=30
 INTERFACE_NAME=OC_BRIDGE
-CONNECTION_LOGS=/dev/null
+CONNECTION_LOGS="$CONNECTION_LOGS"
 EOSRV
 fi
 
