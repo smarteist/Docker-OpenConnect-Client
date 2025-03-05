@@ -1,9 +1,15 @@
 # Docker OpenConnect Client
 
-## Build
+## Build or Pull
 
-Source code available in [this](https://github.com/smarteist/Docker-OpenConnect-Client) repository.
+Source code available in [this](https://github.com/smarteist/Docker-OpenConnect-Client) repository and docker hub image available in [hub.docker.com](https://hub.docker.com/r/smarteist/openconnect-client).
 
+##### Docker Pull Command
+```bash
+docker pull smarteist/openconnect-client
+```
+
+##### Building
 ```bash
 docker build -t smarteist/openconnect-client ./
 ```
